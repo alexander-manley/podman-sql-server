@@ -1,6 +1,7 @@
 # Containerized MS SQL Server + Machine Learning Services
 # T-SQL + Python/R ML
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-machine-learning-docker?view=sql-server-ver16
+https://hub.docker.com/_/microsoft-mssql-server
 
 # Base Image
 podman pull mcr.microsoft.com/mssql/server:2022-latest
