@@ -11,11 +11,14 @@ git clone https://github.com/microsoft/mssql-docker mssql-docker
 cd mssql-docker/linux/preview/examples/mssql-mlservices
 podman build -t mssql-server-2022-mlservices .
 
-# Launch Developer + ML Services
-podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=password -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql -p 1433:1433 --name mssql-server-2022-mlservices mssql-server-2022-mlservices
+# Launch Developer v2019
+podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=password -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql/data -p 1433:1433 --name mssql-server-2019 mcr.microsoft.com/mssql/server:2019-latest
 
-# Launch Express + ML Services
-podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=password -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql -p 1433:1433 --name mssql-server-2022-mlservices mssql-server-2022-mlservices
+# Launch Developer v2022 + ML Services
+podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=password -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql/data -p 1433:1433 --name mssql-server-2022-mlservices mssql-server-2022-mlservices
+
+# Launch Express v2022 + ML Services
+podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=password -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql/data -p 1433:1433 --name mssql-server-2022-mlservices mssql-server-2022-mlservices
 
 # Startup
 podman exec -it mssql-server-2022-mlservices /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P password
