@@ -24,7 +24,7 @@ podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSS
 podman exec -it mssql-server-2022-mlservices /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Passw0rd
 
 # Activate ML Services via T-SQL
-# OUTPUT: Configuration option 'external scripts enabled' changed from 0 to 1. Run the RECONFIGURE statement to install.
+### OUTPUT: Configuration option 'external scripts enabled' changed from 0 to 1. Run the RECONFIGURE statement to install.
 EXEC sp_configure  'external scripts enabled', 1;
 RECONFIGURE WITH OVERRIDE
 
