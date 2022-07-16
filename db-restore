@@ -1,4 +1,4 @@
--- v2022 Beta requires pre existing DB for restores (BUG)
+-- v2022 mssql-server-2022-mlservices (Beta) requires pre existing DB for restores (BUG)
 USE master
 GO
 IF NOT EXISTS (
