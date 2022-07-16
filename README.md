@@ -20,8 +20,13 @@ podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSS
 # Launch Express v2022 + ML Services
 podman run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=Passw0rd -e "MSSQL_PID=Developer" -v /mnt/c/Users/Alexander/Desktop/Data/mssql-server-data:/var/opt/mssql/data -p 1433:1433 --name mssql-server-2022-mlservices mssql-server-2022-mlservices
 
-# Startup
+# Terminal for v2019 (no sqlcmd for v2022-Beta)
 podman exec -it mssql-server-2022-mlservices /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Passw0rd
+
+# Activate ML Services via T-SQL
+# OUTPUT: Configuration option 'external scripts enabled' changed from 0 to 1. Run the RECONFIGURE statement to install.
+EXEC sp_configure  'external scripts enabled', 1;
+RECONFIGURE WITH OVERRIDE
 
 # Manage with SQL Server Management Studio & Azure Data Studio
 https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms-19?view=sql-server-ver16
